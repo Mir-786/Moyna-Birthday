@@ -2,20 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-pink: #ffeef2;
+}
+
+
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #fffafb;
-  color: #2b2b2b;
+  background-color: #fffbfd;
+  color: #1f1f23;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   overflow-x: hidden;
+  perspective: 1200px;
 }
 
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 0.9; transform: scale(1.05); }
+/* 3D Scene Container */
+.scene-3d {
+  perspective: 1200px;
+  transform-style: preserve-3d;
 }
 
-.glow-pill {
-  animation: pulseGlow 4s ease-in-out infinite;
+/* Smooth card transitions */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+  will-change: transform;
+}
+
+.card-3d:hover {
+  transform: translateZ(35px) rotateX(4deg) rotateY(-4deg);
+}
+
+/* Glass effect */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 220, 230, 0.7);
 }
